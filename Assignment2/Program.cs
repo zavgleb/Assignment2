@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,7 +48,7 @@ namespace Assignment2_S19
 
             Console.WriteLine("\n\nBalanced sums");
 
-            List<int> arr = new List<int> { 1,2,3 };
+            List<int> arr = new List<int> { 1, 2, 3 };
 
             Console.WriteLine(balancedSums(arr));
 
@@ -229,13 +228,13 @@ namespace Assignment2_S19
             int[] array = arr.ToArray();
             int length = array.Length;
 
-            if (length==1)
+            if (length == 1)
             {
                 return "Yes";
             }
             else if (length == 2)
             {
-                if (array[0]==0 | array[1]==0)
+                if (array[0] == 0 | array[1] == 0)
                 {
                     return "Yes";
                 }
@@ -265,7 +264,7 @@ namespace Assignment2_S19
                     else
                     {
                         int sumLeft = new ArraySegment<int>(array, 0, i).Sum();
-                        int sumRight = new ArraySegment<int>(array, i + 1, length-i-1).Sum();
+                        int sumRight = new ArraySegment<int>(array, i + 1, length - i - 1).Sum();
                         if (sumLeft == sumRight)
                         {
                             return "Yes";
