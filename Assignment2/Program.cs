@@ -6,7 +6,12 @@ namespace Assignment2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int[] a = new int[] { 1, 2, 3, 4, 5 };
+            int d = 2;
+            rotLeft(a, d);
+
+            Console.ReadKey();
         }
+
     }
 }
