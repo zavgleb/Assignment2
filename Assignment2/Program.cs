@@ -26,8 +26,6 @@ namespace Assignment2_S19
 
             displayArray(r);
 
-            Console.ReadLine();
-
 
 
             // Maximum toys
