@@ -54,6 +54,7 @@ namespace Assignment2_S19
 
             Console.ReadLine();
 
+
             // Missing numbers
 
             Console.WriteLine("\n\nMissing numbers");
@@ -72,10 +73,16 @@ namespace Assignment2_S19
 
             Console.WriteLine("\n\nGrading students");
 
-            int[] grades = { 73, 67, 38, 33 };
+            int arrayMax = 7;
+            Random RandomGrades = new Random();
+            int[] grades = new int[arrayMax];
+            for (int i = 0; i < grades.Length; i++)
+            {
+                grades[i] = RandomGrades.Next(0, 100);
+            }
 
             int[] r3 = gradingStudents(grades);
-
+            Console.Write("\n\nFinal Grades: ");
             displayArray(r3);
 
 
@@ -84,10 +91,16 @@ namespace Assignment2_S19
 
             Console.WriteLine("\n\nFind the median");
 
-            int[] arr2 = { 0, 1, 2, 4, 6, 5, 3 };
+            int arraysize = 8;
+            Random Rand = new Random();
+            int[] arr2 = new int[arraysize];
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                arr2[i] = Rand.Next(0, 100);
+            }
 
             Console.WriteLine(findMedian(arr2));
-
+            Console.ReadLine();
 
 
             // closest numbers
@@ -109,7 +122,7 @@ namespace Assignment2_S19
             int year = 2017;
 
             Console.WriteLine(dayOfProgrammer(year));
-
+            Console.ReadLine();
         }
 
 
@@ -127,7 +140,7 @@ namespace Assignment2_S19
                 Console.Write(n + " ");
 
             }
-
+            Console.ReadKey();
         }
 
 
@@ -296,8 +309,51 @@ namespace Assignment2_S19
         static int[] gradingStudents(int[] grades)
 
         {
+            //print the Original Grades
+            Console.Write("\nOld Grades:\n");
+            for (int i = 0; i < grades.Length; i++)
+            {
+                Console.Write("{0} ", grades[i]);
+            }
 
-            return new int[] { };
+            //An array to hold the Final Rounded Grade
+            int[] FinalGrades = new int[grades.Length];
+            //Grading round number
+            int multiplesof = 5;
+
+
+            //calculate the final grade.
+            //If the original grade is less than 38 then there is no rounding, else round it to the next multiple of 5 if the difference between the next mulltiple of 5 and the original grade is less than 3
+            //If the difference is more than 3 then leave as is and dont round
+            for (int i = 0; i < grades.Length; i++)
+            {
+                //Catch for error
+                if (grades[i] < 0 || grades[i] > 100) { Console.WriteLine("Grade is not valid"); }
+
+                else if (grades[i] >= 0 || grades[i] >= 100)
+                {
+                    //variable to calculate the Rounded Grades
+                    int RoundedGrades = grades[i] + (multiplesof - grades[i] % multiplesof);
+                    //If the origianl grade is less than 38 then leave as is
+                    if (grades[i] < 38)
+                    {
+                        FinalGrades[i] = grades[i];
+                    }
+                    //if the original grade is greater than 38 then apply the rounding rule defined in the top comment above
+                    if (grades[i] >= 38)
+                    {
+                        // if the difference is less than 3 then round
+                        if (RoundedGrades - grades[i] < 3)
+                        {
+                            FinalGrades[i] = RoundedGrades;
+                        }
+                        //else dont round
+                        else { FinalGrades[i] = grades[i]; }
+                    }
+                }
+            }
+            //return the final grade to the output
+            return FinalGrades;
 
         }
 
@@ -308,7 +364,50 @@ namespace Assignment2_S19
         static int findMedian(int[] arr)
 
         {
+            //to find the MID
+            int mid;
 
+            //Print the output of the original array
+            Console.Write("Array Element is: ");
+            foreach (int i in arr)
+            {
+                Console.Write("{0} ", i);
+            }
+
+            Console.WriteLine();
+
+            //sort the array using the bubble sort method
+            BubbleSort(arr);
+
+            //print the output of the bubble sort
+            Console.Write("Bubble Sorted Array is: ");
+            foreach (int i in arr)
+            {
+                Console.Write("{0} ", i);
+            }
+
+            Console.WriteLine();
+            Console.Write("The Median is: ");
+
+            //if the lenght of the array%2 is 1 then divide the array lenght by 2 and subtract .5 to get the mid index
+            if (arr.Length % 2 == 1)
+            {
+                mid = (int)((arr.Length / 2) - 0.5);
+                return arr[mid];
+            }
+
+            //if the lenght of the array%2==0 then compute the mid by finding the two middle numbers
+            if (arr.Length % 2 == 0)
+            {
+                //get the two middle numbers
+                int mid1, mid2;
+                int GetNumber = arr.Length / 2;
+                mid1 = GetNumber - 1;
+                mid2 = mid1 + 1;
+                //calculate the mid
+                mid = (arr[mid1] + arr[mid2]) / 2;
+                return mid;
+            }
             return 0;
 
         }
@@ -344,6 +443,7 @@ namespace Assignment2_S19
         static int[] BubbleSort(int[] arr) //sorts the array using bubble sort method
 
         {
+            //Team comment: I really like this Bubble Sort. Nice work here. was able to use it for the findMedian #6
 
             int Subs;
 
