@@ -60,7 +60,7 @@ namespace Assignment2_S19
                 Console.Write("{0} ", i);
             }
 
-
+            int d = 4;
 
             int[] a = { 1, 2, 3, 4, 5 };
 
@@ -590,11 +590,14 @@ namespace Assignment2_S19
         static int[] missingNumbers(int[] arr, int[] brr)
         {
             int[] a_Sorted = BubbleSort(arr);
-            int[] b_Sorted = BubbleSort(brr);
+            List<int> b_Sorted = new List<int>(BubbleSort(brr));
+            int lengthA = a_Sorted.Length;
+            
             List<int> output = new List<int> { };
-            for (int i=0; i < a_Sorted.Length; i++)
+            
+            for (int i=0; i < lengthA; i++)
             {
-                for (int j = 0; j < b_Sorted.Length; j++)
+                for (int j = 0; j < b_Sorted.ToArray().Length; j++)
                 {
                     if (b_Sorted[j] > a_Sorted[i])
                     {
@@ -602,13 +605,13 @@ namespace Assignment2_S19
                     }
                     else if (a_Sorted[i] == b_Sorted[j])
                     {
-                        output.Add(b_Sorted[j]);
-                        b_Sorted.ToList<int>().RemoveAt(j);
+                        b_Sorted.RemoveAt(j);
                         break;
                     }
                 }
+                
             }
-            return output.ToArray<int>();
+            return b_Sorted.ToArray<int>();
         }
 
 
