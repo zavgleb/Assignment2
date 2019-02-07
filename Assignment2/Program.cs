@@ -28,18 +28,37 @@ namespace Assignment2_S19
 
 
         {
+            //random variable to be used to generate random numbers for some of the executions
+            Random Rand = new Random();
 
+            //formatting
+            Console.Write("Group 7 Assignment 2:\n......................... \nMembers:\tRichmond Mensah\n\t\tMoez Farokhniahamedani\n\t\tGleb Zavadskiy");
+            Console.Write("\n----------------------------------------------\n");
+            Console.WriteLine("Press Enter to Execute next method");
 
+            // 1. left rotation
 
-            // left rotation
-
-
-
-            Console.WriteLine("Left Rotation");
-
-
-
-            int d = 4;
+            Console.WriteLine("\nLeft Rotation");
+            //specify a random array legnht
+            int arrayLenght = Rand.Next(5, 7);
+            //create an array to store the array values
+            int[] arraylist = new int[arrayLenght];
+            //fill the array with random numbers
+            for(int i =0;i< arraylist.Length;i++)
+            {
+                arraylist[i] = Rand.Next(1, 10);
+            }
+            //Pick a random number to perfrom rotation
+            int rotateCount = Rand.Next(1,5);
+            //write the random number selected to the screen
+            Console.Write("\nPerform {0} Left Rotate\n", rotateCount);
+            //print the array element
+            Console.Write("Array Element: ");
+            //print the unique array element to the array
+            foreach(var i in arraylist)//.Distinct().ToArray())
+            {
+                Console.Write("{0} ", i);
+            }
 
 
 
@@ -58,6 +77,7 @@ namespace Assignment2_S19
             Console.ReadLine();
 
 
+            //2.  Maximum toys
 
 
 
@@ -136,48 +156,43 @@ namespace Assignment2_S19
             // grading students
 
 
+            // 5. grading students
 
             Console.WriteLine("\n\nGrading students");
-
-
-
-            int[] grades = { 73, 67, 38, 33 };
-
-
-
+            //Generate an array lenght
+            int arrayMax = Rand.Next(1,20);
+            //create a new array and set the lenght to arrayMax variable
+            int[] grades = new int[arrayMax];
+            //Fill the array with random numbers
+            for (int i = 0; i < grades.Length; i++)
+            {
+                grades[i] = Rand.Next(0, 100);
+            }
+            //call the gradestudent method
             int[] r3 = gradingStudents(grades);
-
-
-
+            Console.Write("\nFinal Grades: ");
             displayArray(r3);
 
 
 
+            // 6. find the median: this method executes the median of a range. if there are two middle numbers then it computes then it takes the two middle numbers and calculate the median
 
-
-
-
-            // find the median
-
-
-
-            Console.WriteLine("\n\nFind the median");
-
-
-
-            int[] arr2 = { 0, 1, 2, 4, 6, 5, 3 };
-
-
-
+            Console.WriteLine("\n\nFind the median\n");
+            //Generate an array lenght
+            int arraysize =Rand.Next(1,11);
+            //create a new array and set the lenght to arrayMax variable
+            int[] arr2 = new int[arraysize];
+            //Fill the array with random numbers
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                arr2[i] = Rand.Next(0, 100);
+            }
+            //call the findmedian method
             Console.WriteLine(findMedian(arr2));
+            Console.ReadLine();
 
 
-
-
-
-
-
-            // closest numbers
+            // 7. closest numbers
 
 
 
@@ -214,9 +229,26 @@ namespace Assignment2_S19
 
 
             Console.WriteLine(dayOfProgrammer(year));
+            Console.ReadLine();
 
-
-
+            /*Self Relection:
+             * 
+             * Richmond:
+             * 
+             * 
+             * 
+             * 
+             * Moez:
+             * 
+             * 
+             * 
+             * 
+             * Gleb:
+             * 
+             * 
+             * 
+             * 
+             * */
         }
 
 
@@ -598,10 +630,51 @@ namespace Assignment2_S19
 
 
         {
+            //print the Original Grades
+            Console.Write("\nOld Grades:\n");
+            for (int i = 0; i < grades.Length; i++)
+            {
+                Console.Write("{0} ", grades[i]);
+            }
+
+            //An array to hold the Final Rounded Grade
+            int[] FinalGrades = new int[grades.Length];
+            //Grading round number
+            int multiplesof = 5;
 
 
+            //calculate the final grade.
+            //If the original grade is less than 38 then there is no rounding, else round it to the next multiple of 5 if the difference between the next mulltiple of 5 and the original grade is less than 3
+            //If the difference is more than 3 then leave as is and dont round
+            for (int i = 0; i < grades.Length; i++)
+            {
+                //Catch for error
+                if (grades[i] < 0 || grades[i] > 100) { Console.WriteLine("Grade is not valid"); }
 
-            return new int[] { };
+                else if (grades[i] >= 0 || grades[i] >= 100)
+                {
+                    //variable to calculate the Rounded Grades
+                    int RoundedGrades = grades[i] + (multiplesof - grades[i] % multiplesof);
+                    //If the origianl grade is less than 38 then leave as is
+                    if (grades[i] < 38)
+                    {
+                        FinalGrades[i] = grades[i];
+                    }
+                    //if the original grade is greater than 38 then apply the rounding rule defined in the top comment above
+                    if (grades[i] >= 38)
+                    {
+                        // if the difference is less than 3 then round
+                        if (RoundedGrades - grades[i] < 3)
+                        {
+                            FinalGrades[i] = RoundedGrades;
+                        }
+                        //else dont round
+                        else { FinalGrades[i] = grades[i]; }
+                    }
+                }
+            }
+            //return the final grade to the output
+            return FinalGrades;
 
 
 
@@ -619,12 +692,51 @@ namespace Assignment2_S19
 
         static int findMedian(int[] arr)
 
-
-
         {
+            //to find the MID
+            int mid;
 
+            //Print the output of the original array
+            Console.Write("Array Element is: ");
+            foreach (int i in arr)
+            {
+                Console.Write("{0} ", i);
+            }
 
+            Console.WriteLine();
 
+            //sort the array using the bubble sort method
+            BubbleSort(arr);
+
+            //print the output of the bubble sort
+            Console.Write("Bubble Sorted Array is: ");
+            foreach (int i in arr)
+            {
+                Console.Write("{0} ", i);
+            }
+
+            Console.WriteLine();
+            Console.Write("The Median is: ");
+
+            //if the lenght of the array%2 is 1 then divide the array lenght by 2 and subtract .5 to get the mid index
+            if (arr.Length % 2 == 1)
+            {
+                mid = ((arr.Length / 2) - 1/2);
+                return arr[mid];
+            }
+
+            //if the lenght of the array%2==0 then compute the mid by finding the two middle numbers
+            if (arr.Length % 2 == 0)
+            {
+                //get the two middle numbers
+                int mid1, mid2;
+                int GetNumber = arr.Length / 2;
+                mid1 = GetNumber - 1;
+                mid2 = mid1 + 1;
+                //calculate the mid
+                mid = (arr[mid1] + arr[mid2]) / 2;
+                return mid;
+            }
             return 0;
 
 
@@ -694,6 +806,7 @@ namespace Assignment2_S19
 
 
         {
+            //Richmond's Comment: I really like this Bubble Sort. Nice work here. was able to use it for the findMedian #6
 
 
 
