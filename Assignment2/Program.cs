@@ -13,22 +13,45 @@ namespace Assignment2_S19
         static void Main(string[] args)
 
         {
+            //random variable to be used to generate random numbers for some of the executions
+            Random Rand = new Random();
 
-            // left rotation
+            //formatting
+            Console.Write("Group 7 Assignment 2:\n......................... \nMembers:\tRichmond Mensah\n\t\tMoez Farokhniahamedani\n\t\tGleb Zavadskiy");
+            Console.Write("\n----------------------------------------------\n");
+            Console.WriteLine("Press Enter to Execute next method");
 
-            Console.WriteLine("Left Rotation");
+            // 1. left rotation
 
-            int d = 4;
+            Console.WriteLine("\nLeft Rotation");
+            //specify a random array legnht
+            int arrayLenght = Rand.Next(5, 7);
+            //create an array to store the array values
+            int[] arraylist = new int[arrayLenght];
+            //fill the array with random numbers
+            for(int i =0;i< arraylist.Length;i++)
+            {
+                arraylist[i] = Rand.Next(1, 10);
+            }
+            //Pick a random number to perfrom rotation
+            int rotateCount = Rand.Next(1,5);
+            //write the random number selected to the screen
+            Console.Write("\nPerform {0} Left Rotate\n", rotateCount);
+            //print the array element
+            Console.Write("Array Element: ");
+            //print the unique array element to the array
+            foreach(var i in arraylist)//.Distinct().ToArray())
+            {
+                Console.Write("{0} ", i);
+            }
 
-            int[] a = { 1, 2, 3, 4, 5 };
-
-            int[] r = rotLeft(a, d);
-
+            int[] r = rotLeft(arraylist, rotateCount);
+            Console.Write("\n\nAfter Rotating: ");
             displayArray(r);
 
 
 
-            // Maximum toys
+            //2.  Maximum toys
 
             Console.WriteLine("\n\nMaximum toys");
 
@@ -42,7 +65,7 @@ namespace Assignment2_S19
 
 
 
-            // Balanced sums
+            // 3. Balanced sums
 
             Console.WriteLine("\n\nBalanced sums");
 
@@ -53,7 +76,7 @@ namespace Assignment2_S19
             Console.ReadLine();
 
 
-            // Missing numbers
+            // 4. Missing numbers
 
             Console.WriteLine("\n\nMissing numbers");
 
@@ -67,41 +90,43 @@ namespace Assignment2_S19
 
 
 
-            // grading students
+            // 5. grading students
 
             Console.WriteLine("\n\nGrading students");
-
-            int arrayMax = 7;
-            Random RandomGrades = new Random();
+            //Generate an array lenght
+            int arrayMax = Rand.Next(1,20);
+            //create a new array and set the lenght to arrayMax variable
             int[] grades = new int[arrayMax];
+            //Fill the array with random numbers
             for (int i = 0; i < grades.Length; i++)
             {
-                grades[i] = RandomGrades.Next(0, 100);
+                grades[i] = Rand.Next(0, 100);
             }
-
+            //call the gradestudent method
             int[] r3 = gradingStudents(grades);
-            Console.Write("\n\nFinal Grades: ");
+            Console.Write("\nFinal Grades: ");
             displayArray(r3);
 
 
 
-            // find the median
+            // 6. find the median: this method executes the median of a range. if there are two middle numbers then it computes then it takes the two middle numbers and calculate the median
 
-            Console.WriteLine("\n\nFind the median");
-
-            int arraysize = 8;
-            Random Rand = new Random();
+            Console.WriteLine("\n\nFind the median\n");
+            //Generate an array lenght
+            int arraysize =Rand.Next(1,11);
+            //create a new array and set the lenght to arrayMax variable
             int[] arr2 = new int[arraysize];
+            //Fill the array with random numbers
             for (int i = 0; i < arr2.Length; i++)
             {
                 arr2[i] = Rand.Next(0, 100);
             }
-
+            //call the findmedian method
             Console.WriteLine(findMedian(arr2));
             Console.ReadLine();
 
 
-            // closest numbers
+            // 7. closest numbers
 
             Console.WriteLine("\n\nClosest numbers");
 
@@ -113,7 +138,7 @@ namespace Assignment2_S19
 
 
 
-            // Day of programmer
+            // 8. Day of programmer
 
             Console.WriteLine("\n\nDay of Programmer");
 
@@ -121,6 +146,25 @@ namespace Assignment2_S19
 
             Console.WriteLine(dayOfProgrammer(year));
             Console.ReadLine();
+
+            /*Self Relection:
+             * 
+             * Richmond:
+             * 
+             * 
+             * 
+             * 
+             * Moez:
+             * 
+             * 
+             * 
+             * 
+             * Gleb:
+             * 
+             * 
+             * 
+             * 
+             * */
         }
 
 
@@ -128,19 +172,13 @@ namespace Assignment2_S19
         static void displayArray(int[] arr)
 
         {
-
             Console.WriteLine();
-
             foreach (int n in arr)
-
             {
-
                 Console.Write(n + " ");
-
             }
             Console.ReadKey();
         }
-
 
 
         // Complete the rotLeft function below.
@@ -148,10 +186,6 @@ namespace Assignment2_S19
         static int[] rotLeft(int[] a, int d)
 
         {
-
-
-
-
 
             while (d != 0)
 
@@ -161,25 +195,17 @@ namespace Assignment2_S19
 
                 Subs = a[0]; // to put the first element of the array in an auxiliary container to be moved
 
-
-
                 for (int i = 0; i < a.Length - 1; i++) //moves all elements one unit to the left
 
                 {
 
                     a[i] = a[i + 1];
 
-
-
                 }
 
                 a[a.Length - 1] = Subs; //puts the first element at the end
 
-                d = d - 1; // controls the total required shifts
-
-
-
-
+                d = d - 1; // controls the total required 
 
             }
 
@@ -197,33 +223,19 @@ namespace Assignment2_S19
 
             int[] SortedPrices = BubbleSort(prices);
 
-
-
             int TotalPrice = 0;
 
             int Counter = 0;
-
-
-
+ 
             while (TotalPrice <= k)
 
             {
-
-
 
                 TotalPrice = TotalPrice + SortedPrices[Counter];
 
                 Counter = Counter + 1;
 
             }
-
-
-
-
-
-
-
-
 
             return Counter - 1;
 
@@ -390,7 +402,7 @@ namespace Assignment2_S19
             //if the lenght of the array%2 is 1 then divide the array lenght by 2 and subtract .5 to get the mid index
             if (arr.Length % 2 == 1)
             {
-                mid = (int)((arr.Length / 2) - 0.5);
+                mid = ((arr.Length / 2) - 1/2);
                 return arr[mid];
             }
 
@@ -441,7 +453,7 @@ namespace Assignment2_S19
         static int[] BubbleSort(int[] arr) //sorts the array using bubble sort method
 
         {
-            //Team comment: I really like this Bubble Sort. Nice work here. was able to use it for the findMedian #6
+            //Richmond's Comment: I really like this Bubble Sort. Nice work here. was able to use it for the findMedian #6
 
             int Subs;
 
