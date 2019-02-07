@@ -154,7 +154,7 @@ namespace Assignment2_S19
              * 
              * 
              * 
-             * Moez:
+             * Moez: Algorithmic problem Solving can be applied to all aspects of our research and helps us to solve problems in a more disciplined manner
              * 
              * 
              * 
@@ -429,8 +429,33 @@ namespace Assignment2_S19
         static int[] closestNumbers(int[] arr)
 
         {
+            int[] SortedArr = BubbleSort(arr); // array must be ordered to reduce the search number
+            int arrlength = SortedArr.Length; // finding the array length to control the iteration
+            List<int> closeNumbersList = new List<int>(); //define a new list since arrays are immutable
+            int sub = Math.Abs( SortedArr[1]-SortedArr[0]); // initial subtraction threshold
+            closeNumbersList.Add(SortedArr[0]);
+            closeNumbersList.Add(SortedArr[1]);
+                  
 
-            return new int[] { };
+            for (int i=2; i<arrlength;i++)
+            {
+                if (Math.Abs(SortedArr[i]-SortedArr[i-1])<sub) //updating smallest distance
+                {
+                    sub = Math.Abs(SortedArr[i] - SortedArr[i-1]);
+                    closeNumbersList.Clear(); // removing existing elements from the list
+                    closeNumbersList.Add(SortedArr[i-1]);
+                    closeNumbersList.Add(SortedArr[i]);
+                }
+                else if(Math.Abs(SortedArr[i] - SortedArr[i-1])==sub) // expanding a list of the same distance
+                {
+                    closeNumbersList.Add(SortedArr[i-1]);
+                    closeNumbersList.Add(SortedArr[i]);
+                }
+            }
+
+            int[] ReturnedValues = closeNumbersList.ToArray(); // converting the list to array
+
+            return ReturnedValues;
 
         }
 
