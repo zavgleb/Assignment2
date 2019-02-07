@@ -243,7 +243,7 @@ namespace Assignment2_S19
              * 
              * 
              * 
-             * Gleb:
+             * Gleb: Algorithms increase programs performance and speed. Additionally, it allows programmers to reuse, update, and fix them once written.
              * 
              * 
              * 
