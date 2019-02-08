@@ -54,17 +54,18 @@ namespace Assignment2_S19
 
 
             //2.  Maximum toys
-
+            Console.Write("\n----------------------------------------------");
             Console.WriteLine("\nMaximum toys");
 
             int k = 50;
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
             Console.WriteLine(maximumToys(prices, k));
+            Console.Write("\n----------------------------------------------");
             Console.ReadLine();
 
 
             //3. Balanced sums
-            Console.Write("----------------------------------------------");
+            Console.Write("\n----------------------------------------------");
             Console.WriteLine("\n\nBalanced sums");
             List<int> arr = new List<int> { 1, 2, 3 };
             Console.WriteLine(balancedSums(arr));
@@ -73,7 +74,7 @@ namespace Assignment2_S19
 
 
             //4. Missing numbers
-
+            Console.Write("\n----------------------------------------------");
             Console.WriteLine("\nMissing numbers");
 
             int[] arr1 = { 203, 204, 205, 206, 207, 208, 203, 204, 205, 206 };
@@ -86,7 +87,7 @@ namespace Assignment2_S19
 
 
             // 5. grading students
-            Console.Write("----------------------------------------------");
+            Console.Write("\n----------------------------------------------");
             Console.WriteLine("\n\nGrading students");
             //Generate an array lenght
             int arrayMax = Rand.Next(1,20);
@@ -106,7 +107,7 @@ namespace Assignment2_S19
 
 
             // 6. find the median: this method executes the median of a range. if there are two middle numbers then it computes then it takes the two middle numbers and calculate the median
-            Console.Write("----------------------------------------------");
+            Console.Write("\n----------------------------------------------");
             Console.WriteLine("\n\nFind the median\n");
             //Generate an array lenght
             int arraysize =Rand.Next(1,11);
@@ -124,7 +125,7 @@ namespace Assignment2_S19
 
 
             // 7. closest numbers
-            Console.Write("----------------------------------------------");
+            Console.Write("\n----------------------------------------------");
             Console.WriteLine("\n\nClosest numbers");
             int[] arr3 = { 5, 4, 3, 2 };
 
@@ -135,7 +136,7 @@ namespace Assignment2_S19
             Console.ReadLine();
 
             // 8. Day of programmer
-            Console.Write("----------------------------------------------");
+            Console.Write("\n----------------------------------------------");
             Console.WriteLine("\n\nDay of Programmer");
             
             int year = Rand.Next(1700,2700);
@@ -459,7 +460,7 @@ namespace Assignment2_S19
             if (!MinYear_Check && !MaxYearCheck) //check for invalid year
             {
 
-                int[] leapYeardays = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //holde leap year days of each month
+                int[] leapYeardays = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //hold leap year days of each month
                 int[] NonLeapYear = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //hold non leap year days of each month
                 int sum = 0; //to hold the value of the sum of the first 8 months
                 int dayleft; //to hold the value of the days left after subtractinf 256 from the sum variable
