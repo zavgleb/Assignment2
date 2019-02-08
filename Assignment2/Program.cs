@@ -47,12 +47,15 @@ namespace Assignment2_S19
             }
 
             int[] r = rotLeft(arraylist, rotateCount);
-            Console.Write("\n\nAfter Rotating: ");
+            Console.Write("\nAfter Rotating: ");
             displayArray(r);
+            Console.Write("\n----------------------------------------------");
             Console.ReadLine();
 
+
             //2.  Maximum toys
-            Console.WriteLine("\n\nMaximum toys");
+
+            Console.WriteLine("\nMaximum toys");
 
             int k = 50;
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
@@ -60,29 +63,30 @@ namespace Assignment2_S19
             Console.ReadLine();
 
 
-            // Balanced sums
-
+            //3. Balanced sums
+            Console.Write("----------------------------------------------");
             Console.WriteLine("\n\nBalanced sums");
             List<int> arr = new List<int> { 1, 2, 3 };
             Console.WriteLine(balancedSums(arr));
+            Console.Write("\n----------------------------------------------");
             Console.ReadLine();
 
 
-            // Missing numbers
+            //4. Missing numbers
 
-            Console.WriteLine("\n\nMissing numbers");
+            Console.WriteLine("\nMissing numbers");
 
             int[] arr1 = { 203, 204, 205, 206, 207, 208, 203, 204, 205, 206 };
             int[] brr = { 203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204 };
             int[] r2 = missingNumbers(arr1, brr);
 
             displayArray(r2);
-
+            Console.Write("\n----------------------------------------------");
             Console.ReadLine();
 
 
             // 5. grading students
-
+            Console.Write("----------------------------------------------");
             Console.WriteLine("\n\nGrading students");
             //Generate an array lenght
             int arrayMax = Rand.Next(1,20);
@@ -97,11 +101,12 @@ namespace Assignment2_S19
             int[] r3 = gradingStudents(grades);
             Console.Write("\nFinal Grades: ");
             displayArray(r3);
+            Console.Write("\n----------------------------------------------");
             Console.ReadLine();
 
 
             // 6. find the median: this method executes the median of a range. if there are two middle numbers then it computes then it takes the two middle numbers and calculate the median
-
+            Console.Write("----------------------------------------------");
             Console.WriteLine("\n\nFind the median\n");
             //Generate an array lenght
             int arraysize =Rand.Next(1,11);
@@ -114,26 +119,30 @@ namespace Assignment2_S19
             }
             //call the findmedian method
             Console.WriteLine(findMedian(arr2));
+            Console.Write("\n----------------------------------------------");
             Console.ReadLine();
 
 
             // 7. closest numbers
-
+            Console.Write("----------------------------------------------");
             Console.WriteLine("\n\nClosest numbers");
             int[] arr3 = { 5, 4, 3, 2 };
 
             int[] r4 = closestNumbers(arr3);
 
             displayArray(r4);
-
+            Console.Write("\n----------------------------------------------");
+            Console.ReadLine();
 
             // 8. Day of programmer
-
+            Console.Write("----------------------------------------------");
             Console.WriteLine("\n\nDay of Programmer");
-
-            int year = 2017;
-
+            
+            int year = Rand.Next(1700,2700);
+            Console.Write("Random Year {0}", year);
             Console.WriteLine(dayOfProgrammer(year));
+            Console.Write("\n----------------------------------------------\n");
+            Console.WriteLine("End of the Program. Prease Any Key to Exit...");
             Console.ReadLine();
 
             /*Self Relection:
@@ -171,9 +180,12 @@ namespace Assignment2_S19
             }
         }
 
+        //the custom bubble sort method built for sorting the  unsorted arrays is att the very buttom
+
         // Complete the rotLeft function below.
         static int[] rotLeft(int[] a, int d)
         {
+ 
             while (d != 0)
             {
                 int Subs;
@@ -269,6 +281,7 @@ namespace Assignment2_S19
         // Complete the missingNumbers function below.
         static int[] missingNumbers(int[] arr, int[] brr)
         {
+
             int[] a_Sorted = BubbleSort(arr);
             List<int> b_Sorted = new List<int>(BubbleSort(brr));
             int lengthA = a_Sorted.Length;
@@ -436,9 +449,58 @@ namespace Assignment2_S19
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
+            //Leap Year Rules:
+            //Divisible by 400
+            //divisble by 4 and not by 100
+            //Output format dd.mm.yyyy
+            bool MinYear_Check = year < 1700;
+            bool MaxYearCheck = year > 2700;
 
+            if (!MinYear_Check && !MaxYearCheck) //check for invalid year
+            {
+
+                int[] leapYeardays = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //holde leap year days of each month
+                int[] NonLeapYear = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //hold non leap year days of each month
+                int sum = 0; //to hold the value of the sum of the first 8 months
+                int dayleft; //to hold the value of the days left after subtractinf 256 from the sum variable
+                const int programmerday = 256; //constant programmer
+                string CalenderDate; //to hold the value for the formated date
+
+                //if leap year then do the following
+                if (year % 400 == 0 || (year % 4 == 0 && year % 100 == 0))
+                {
+                    var First8Months = new ArraySegment<int>(leapYeardays, 0, 8); //take the first 8 element
+                    foreach (var day in First8Months)
+                    {
+                        sum += day; //sum up the first 8 months days
+                    }
+                    dayleft = (programmerday - sum); //get the remainder of days left by subtracting 256 from the sum variable
+                    CalenderDate = dayleft + "." + "09." + year; //output format
+                    Console.WriteLine();
+                    return CalenderDate.ToString(); //return the ooutput
+                }
+
+                //else if its not a leap year then calculate the date
+                else
+                {
+                    var First8Months = new ArraySegment<int>(NonLeapYear, 0, 8); //take the first 8 element
+                    foreach (var day in First8Months)
+                    {
+                        sum += day; //sum up the first 8 months days
+                    }
+                    dayleft = (programmerday - sum); //get the remainder of days left by subtracting 256 from the sum variable
+                    CalenderDate = dayleft + "." + "09." + year; //output format
+                    Console.WriteLine();
+                    return CalenderDate.ToString(); //return the output
+                }
+
+            }
+            else //if the year is invalid then
+            {
+                Console.WriteLine("Input Validation");
+               
+            }
             return "";
-
         }
 
         //Sort Method
