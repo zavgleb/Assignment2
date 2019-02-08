@@ -1,31 +1,17 @@
 ﻿
 using System;
-
 using System.Collections.Generic;
-
 using System.Linq;
-
-
 
 namespace Assignment2_S19
 
-
-
 {
-
-
 
     class Program
 
-
-
     {
 
-
-
         static void Main(string[] args)
-
-
 
         {
             //random variable to be used to generate random numbers for some of the executions
@@ -35,7 +21,7 @@ namespace Assignment2_S19
             Console.Write("Group 7 Assignment 2:\n......................... \nMembers:\tRichmond Mensah\n\t\tMoez Farokhniahamedani\n\t\tGleb Zavadskiy");
             Console.Write("\n----------------------------------------------\n");
             Console.WriteLine("Press Enter to Execute next method");
-
+            Console.ReadLine();
             // 1. left rotation
 
             Console.WriteLine("\nLeft Rotation");
@@ -60,100 +46,39 @@ namespace Assignment2_S19
                 Console.Write("{0} ", i);
             }
 
-            int d = 4;
-
-            int[] a = { 1, 2, 3, 4, 5 };
-
-
-
-            int[] r = rotLeft(a, d);
-
-
-
+            int[] r = rotLeft(arraylist, rotateCount);
+            Console.Write("\n\nAfter Rotating: ");
             displayArray(r);
-
-
-
             Console.ReadLine();
-
 
             //2.  Maximum toys
-
-
-
-
-
-            // Maximum toys
-
-
-
             Console.WriteLine("\n\nMaximum toys");
 
-
-
             int k = 50;
-
-
-
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
-
-
-
             Console.WriteLine(maximumToys(prices, k));
-
-
-
             Console.ReadLine();
-
-
-
-
-
 
 
             // Balanced sums
 
-
-
             Console.WriteLine("\n\nBalanced sums");
-
-
-
             List<int> arr = new List<int> { 1, 2, 3 };
-
-
-
             Console.WriteLine(balancedSums(arr));
-
-
-
             Console.ReadLine();
-
 
 
             // Missing numbers
 
-
-
             Console.WriteLine("\n\nMissing numbers");
 
-
-
             int[] arr1 = { 203, 204, 205, 206, 207, 208, 203, 204, 205, 206 };
-
-
-
             int[] brr = { 203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204 };
-
-
-
             int[] r2 = missingNumbers(arr1, brr);
 
             displayArray(r2);
 
             Console.ReadLine();
-
-            // grading students
 
 
             // 5. grading students
@@ -172,7 +97,7 @@ namespace Assignment2_S19
             int[] r3 = gradingStudents(grades);
             Console.Write("\nFinal Grades: ");
             displayArray(r3);
-
+            Console.ReadLine();
 
 
             // 6. find the median: this method executes the median of a range. if there are two middle numbers then it computes then it takes the two middle numbers and calculate the median
@@ -194,46 +119,28 @@ namespace Assignment2_S19
 
             // 7. closest numbers
 
-
-
             Console.WriteLine("\n\nClosest numbers");
-
-
-
             int[] arr3 = { 5, 4, 3, 2 };
 
-
-
             int[] r4 = closestNumbers(arr3);
-
-
 
             displayArray(r4);
 
 
-
-
-
-
-
-            // Day of programmer
-
-
+            // 8. Day of programmer
 
             Console.WriteLine("\n\nDay of Programmer");
 
-
-
             int year = 2017;
-
-
 
             Console.WriteLine(dayOfProgrammer(year));
             Console.ReadLine();
 
             /*Self Relection:
              * 
-             * Richmond:
+             * ***********Please note that the self reflection comment should be removed and added as a comment when submitting the link on canvas.************ 
+             * 
+             * Richmond: Added as a comment to the assignment submission on canvas as per assignment document
              * 
              * 
              * 
@@ -253,290 +160,87 @@ namespace Assignment2_S19
 
 
 
-
-
-
-
         static void displayArray(int[] arr)
-
-
-
         {
-
-
-
             Console.WriteLine();
-
-
 
             foreach (int n in arr)
 
-
-
             {
-
-
-
                 Console.Write(n + " ");
-
-
-
             }
-
-
-
         }
-
-
-
-
-
-
 
         // Complete the rotLeft function below.
-
-
-
         static int[] rotLeft(int[] a, int d)
-
-
-
         {
-
-
-
-
-
-
-
-
-
-
-
             while (d != 0)
-
-
-
             {
-
-
-
                 int Subs;
-
-
-
                 Subs = a[0]; // to put the first element of the array in an auxiliary container to be moved
-
-
-
-
-
-
-
                 for (int i = 0; i < a.Length - 1; i++) //moves all elements one unit to the left
-
-
-
                 {
-
-
-
                     a[i] = a[i + 1];
-
-
-
-
-
-
-
                 }
-
-
-
                 a[a.Length - 1] = Subs; //puts the first element at the end
-
-
-
                 d = d - 1; // controls the total required shifts
-
-
-
-
-
-
-
-
-
-
-
             }
-
-
-
             return a;
-
-
-
         }
-
-
-
-
-
 
 
         // Complete the maximumToys function below.
-
-
-
         static int maximumToys(int[] prices, int k)
-
-
-
         {
-
-
-
             int[] SortedPrices = BubbleSort(prices);
-
-
-
-
-
-
-
             int TotalPrice = 0;
-
-
-
             int Counter = 0;
 
-
-
-
-
-
-
             while (TotalPrice <= k)
-
-
-
             {
-
-
-
-
-
-
-
                 TotalPrice = TotalPrice + SortedPrices[Counter];
-
-
-
                 Counter = Counter + 1;
-
-
-
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             return Counter - 1;
-
-
-
         }
 
 
-
-
-
-
-
         // Complete the balancedSums function below.
-
-
-
         static string balancedSums(List<int> arr)
-
-
-
         {
-
             int[] array = arr.ToArray();
-
             int length = array.Length;
 
-
-
             if (length == 1)
-
             {
-
                 return "Yes";
-
             }
 
             else if (length == 2)
-
             {
-
                 if (array[0] == 0 | array[1] == 0)
-
                 {
-
                     return "Yes";
-
                 }
-
             }
 
             else
-
             {
-
                 for (int i = 0; i < length; i++)
-
                 {
-
                     if (i == length - 1)
-
                     {
-
                         int sumLeft = new ArraySegment<int>(array, 0, i).Sum();
-
                         int sumRight = 0;
 
                         if (sumLeft == sumRight)
-
                         {
-
                             return "Yes";
-
                         }
-
                     }
-
                     else if (i == 0)
-
                     {
-
                         int sumLeft = 0;
 
                         int sumRight = new ArraySegment<int>(array, i + 1, length - i - 1).Sum();
@@ -544,49 +248,25 @@ namespace Assignment2_S19
                         if (sumLeft == sumRight)
 
                         {
-
                             return "Yes";
-
                         }
-
                     }
-
                     else
-
                     {
-
                         int sumLeft = new ArraySegment<int>(array, 0, i).Sum();
-
                         int sumRight = new ArraySegment<int>(array, i + 1, length - i - 1).Sum();
-
                         if (sumLeft == sumRight)
-
                         {
-
                             return "Yes";
-
                         }
-
                     }
-
                 }
-
             }
-
             return "No";
-
         }
 
 
-
-
-
-
-
         // Complete the missingNumbers function below.
-
-
-
         static int[] missingNumbers(int[] arr, int[] brr)
         {
             int[] a_Sorted = BubbleSort(arr);
@@ -615,22 +295,8 @@ namespace Assignment2_S19
         }
 
 
-
-
-
-
-
-
-
-
-
         // Complete the gradingStudents function below.
-
-
-
         static int[] gradingStudents(int[] grades)
-
-
 
         {
             //print the Original Grades
@@ -644,7 +310,6 @@ namespace Assignment2_S19
             int[] FinalGrades = new int[grades.Length];
             //Grading round number
             int multiplesof = 5;
-
 
             //calculate the final grade.
             //If the original grade is less than 38 then there is no rounding, else round it to the next multiple of 5 if the difference between the next mulltiple of 5 and the original grade is less than 3
@@ -679,20 +344,10 @@ namespace Assignment2_S19
             //return the final grade to the output
             return FinalGrades;
 
-
-
         }
 
 
-
-
-
-
-
         // Complete the findMedian function below.
-
-
-
         static int findMedian(int[] arr)
 
         {
@@ -741,25 +396,11 @@ namespace Assignment2_S19
                 return mid;
             }
             return 0;
-
-
-
         }
 
 
-
-
-
-
-
         // Complete the closestNumbers function below.
-
-
-
         static int[] closestNumbers(int[] arr)
-
-
-
         {
             int[] SortedArr = BubbleSort(arr); // array must be ordered to reduce the search number
             int arrlength = SortedArr.Length; // finding the array length to control the iteration
@@ -789,131 +430,39 @@ namespace Assignment2_S19
 
             return ReturnedValues;
 
-
-
         }
-
-
-
-
-
 
 
         // Complete the dayOfProgrammer function below.
-
-
-
         static string dayOfProgrammer(int year)
-
-
-
         {
-
-
 
             return "";
 
-
-
         }
-
-
-
-
-
-
 
         //Sort Method
-
-
-
         static int[] BubbleSort(int[] arr) //sorts the array using bubble sort method
-
-
-
         {
             //Richmond's Comment: I really like this Bubble Sort. Nice work here. was able to use it for the findMedian #6
-
-
-
             int Subs;
-
-
-
             for (int i = 0; i < arr.Length; i++)
-
-
-
             {
-
-
-
                 for (int j = 0; j < arr.Length - 1; j++)
 
-
-
                 {
-
-
-
                     if (arr[j] > arr[j + 1])
 
-
-
                     {
-
-
-
                         Subs = arr[j + 1];
-
-
-
                         arr[j + 1] = arr[j];
-
-
-
                         arr[j] = Subs;
-
-
-
                     }
-
-
-
                 }
-
-
-
             }
-
-
-
             return arr;
-
-
-
-
-
-
-
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
 
 }
