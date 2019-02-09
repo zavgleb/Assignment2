@@ -363,7 +363,7 @@ namespace Assignment2_S19
 
 
         // Complete the findMedian function below.
-        static double findMedian(int[] arr)
+        static int findMedian(int[] arr)
 
         {
             //to find the MID
