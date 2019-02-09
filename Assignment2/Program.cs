@@ -139,7 +139,7 @@ namespace Assignment2_S19
             Console.Write("\n----------------------------------------------");
             Console.WriteLine("\n\nDay of Programmer");
             
-            int year = Rand.Next(1700,2700);
+            int year = Rand.Next(1700, 2700);
             Console.Write("Random Year {0}", year);
             Console.WriteLine(dayOfProgrammer(year));
             Console.Write("\n----------------------------------------------\n");
@@ -148,9 +148,10 @@ namespace Assignment2_S19
 
             /*Self Relection:
              * 
-             * ***********Please note that the self reflection comment should be removed and added as a comment when submitting the link on canvas.************ 
+             * ** 
              * 
-             * Richmond: Added as a comment to the assignment submission on canvas as per assignment document
+             * Richmond: Building algorithms to solve business issues help increase the speed and efficiency of the underlying application. Through out this excercise I was able to learn and apply some few computational skills 
+             *           in building such algorithms. I also was able to work as a team with my team members to pull this assignment together.
              * 
              * 
              * 
@@ -362,7 +363,7 @@ namespace Assignment2_S19
 
 
         // Complete the findMedian function below.
-        static int findMedian(int[] arr)
+        static double findMedian(int[] arr)
 
         {
             //to find the MID
@@ -407,6 +408,7 @@ namespace Assignment2_S19
                 mid2 = mid1 + 1;
                 //calculate the mid
                 mid = (arr[mid1] + arr[mid2]) / 2;
+
                 return mid;
             }
             return 0;
