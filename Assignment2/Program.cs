@@ -89,7 +89,7 @@ namespace Assignment2_S19
             // 5. grading students
             Console.Write("\n----------------------------------------------");
             Console.WriteLine("\n\nGrading students");
-            //Generate an array lenght
+            //Generate an array lenght to hold random grades
             int arrayMax = Rand.Next(1,20);
             //create a new array and set the lenght to arrayMax variable
             int[] grades = new int[arrayMax];
@@ -138,12 +138,12 @@ namespace Assignment2_S19
             // 8. Day of programmer
             Console.Write("\n----------------------------------------------");
             Console.WriteLine("\n\nDay of Programmer");
-            
+            //get a random year
             int year = Rand.Next(1700, 2700);
             Console.Write("Random Year {0}", year);
             Console.WriteLine(dayOfProgrammer(year));
             Console.Write("\n----------------------------------------------\n");
-            Console.WriteLine("End of the Program. Prease Any Key to Exit...");
+            Console.WriteLine("End of the Program. Press Any Key to Exit...");
             Console.ReadLine();
 
             /*Self Relection:
@@ -469,21 +469,26 @@ namespace Assignment2_S19
                 const int programmerday = 256; //constant programmer
                 string CalenderDate; //to hold the value for the formated date
 
-                //if leap year then do the following
-                if (year % 400 == 0 || (year % 4 == 0 && year % 100 == 0))
+                //Since the transition occured on 1918 and Feb 14th was the 32 day of the year, we will assume that there were only 15 days Feb for that year
+                int sum_of_8months = 230;
+                int Day_of_9th_Month = (programmerday - sum_of_8months);
+                if (year == 1918) { Console.WriteLine(); return Day_of_9th_Month.ToString()+"." + "09." + year; }
+
+                //Gregorian and Julian Leap  Programmer Day Calulator
+                if ((year >= 1919 && (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))) || (year <= 1917 && year % 4 == 0))
                 {
-                    var First8Months = new ArraySegment<int>(leapYeardays, 0, 8); //take the first 8 element
-                    foreach (var day in First8Months)
-                    {
-                        sum += day; //sum up the first 8 months days
-                    }
-                    dayleft = (programmerday - sum); //get the remainder of days left by subtracting 256 from the sum variable
-                    CalenderDate = dayleft + "." + "09." + year; //output format
-                    Console.WriteLine();
-                    return CalenderDate.ToString(); //return the ooutput
+                        var First8Months = new ArraySegment<int>(leapYeardays, 0, 8); //take the first 8 element
+                        foreach (var day in First8Months)
+                        {
+                            sum += day; //sum up the first 8 months days
+                        }
+                        dayleft = (programmerday - sum); //get the remainder of days left by subtracting 256 from the sum variable
+                        CalenderDate = dayleft + "." + "09." + year; //output format
+                        Console.WriteLine();
+                        return CalenderDate.ToString(); //return the ooutput
                 }
 
-                //else if its not a leap year then calculate the date
+                //else if none of the year is a Leap year in either the gregorian or the julian calender then calculate the 256th day
                 else
                 {
                     var First8Months = new ArraySegment<int>(NonLeapYear, 0, 8); //take the first 8 element
@@ -497,12 +502,15 @@ namespace Assignment2_S19
                     return CalenderDate.ToString(); //return the output
                 }
 
+
             }
             else //if the year is invalid then
             {
                 Console.WriteLine("Input Validation");
                
             }
+
+
             return "";
         }
 
